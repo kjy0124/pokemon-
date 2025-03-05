@@ -1,0 +1,11 @@
+main {
+  section {
+    background-color: white;
+    transition: 0.3s; //hover아닌 에들도 커질 수 있게
+    &:hover {
+      transform: scale(1.1); //마우스 커서를 갖다대면 1.1배 커지게
+      transition: 0.3s; //0.3초 간 커지게
+      filter: drop-shadow(0 0 5px gray)//커질 때 그림자도 생성
+    }
+  }
+}

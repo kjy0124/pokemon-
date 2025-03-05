@@ -26,13 +26,11 @@ export const Card = ({ pokemon }) => {
   return (
     //카드 클릭 시 pokemon 상세 페이지로 이동
     <CardContainer onClick={() => navigate(`/detail/${pokemon.id}`)}>
-      <section>
-        <img src={pokemon.front} />
-        <div>
-          {pokemon.name}
-          <FavoriteButton pokemonId={pokemon.id} />
-        </div>
-      </section>
+      <img src={pokemon.front} />
+      <div>
+        {pokemon.name}
+        <FavoriteButton pokemonId={pokemon.id} />
+      </div>
     </CardContainer>
   );
 };

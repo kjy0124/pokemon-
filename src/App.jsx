@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.scss";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchMultiplePokemonById } from "./RTK/thunk";
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";

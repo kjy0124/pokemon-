@@ -19,3 +19,4 @@ export default function Search() {
     </>
   );
 }
+// 내가 좋아하는 포켓몬의 데이터만 관리하는 store

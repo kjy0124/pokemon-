@@ -6,3 +6,11 @@ export const selectPokemonById = (pokemonId) =>
     (state) => state.pokemon.data,
     (pokemon) => pokemon.find((el) => el.id === pokemonId)
   );
+
+export const selectPokemonByRegExp = (reg) =>
+  createSelector(
+    (state) => state.pokemon.data,
+
+    //pokemon 이름이 사용자가 입력 받은 정규식과 패턴이 맞는 데이터만 찾아서 반환
+    (pokemon) => pokemon.filter((el) => el.name.match(reg))
+  );

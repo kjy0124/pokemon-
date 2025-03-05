@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import FavoriteButton from "./FavoriteButton";
 
 const CardContainer = styled.section`
   width: 150px;
@@ -23,10 +24,14 @@ const CardContainer = styled.section`
 export const Card = ({ pokemon }) => {
   const navigate = useNavigate();
   return (
+    //카드 클릭 시 pokemon 상세 페이지로 이동
     <CardContainer onClick={() => navigate(`/detail/${pokemon.id}`)}>
       <section>
         <img src={pokemon.front} />
-        <div>{pokemon.name}</div>
+        <div>
+          {pokemon.name}
+          <FavoriteButton pokemonId={pokemon.id} />
+        </div>
       </section>
     </CardContainer>
   );

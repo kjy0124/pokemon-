@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchMultiplePokemonById } from "./thunk";
+import Favorite from "../pages/Favorite";
 
 export const pokemonSlice = createSlice({
   name: "pokemon",
@@ -26,5 +27,21 @@ export const pokemonSlice = createSlice({
       });
   },
 });
-// => action, reducer이 만들어짐 
+// => action, reducer이 만들어짐
 //reducer이 만들어졌다는 것은 reducer를 전달해서 store를 생성할 수 있다는 뜻
+
+export const favoriteSlice = createSlice({
+  name: "favorite",
+  initialState: [1, 2, 3],
+  reducers: {
+    addToFavorite(state, action) {
+      state.push(action.payload.pokemonId);
+    },
+    removeFromFavorite(state, action) {
+      const index = state.indexOf(action.payload.pokemonId);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
+    },
+  },
+});

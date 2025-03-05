@@ -1,4 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
+import Favorite from "../pages/Favorite";
 
 export const selectPokemonById = (pokemonId) =>
   createSelector(
@@ -14,3 +15,11 @@ export const selectPokemonByRegExp = (reg) =>
     //pokemon 이름이 사용자가 입력 받은 정규식과 패턴이 맞는 데이터만 찾아서 반환
     (pokemon) => pokemon.filter((el) => el.name.match(reg))
   );
+
+export const selectFavoritePokemons = createSelector(
+  (state) => state.pokemon.data,
+  (state) => state.favorite,
+  (pokemon, favorite) => {
+    return pokemon.filter((el) => favorite.includes(el.id));
+  }
+);

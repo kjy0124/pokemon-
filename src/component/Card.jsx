@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FavoriteButton from "./FavoriteButton";
+import { memo, useState } from "react";
 
 const CardContainer = styled.section`
   width: 150px;
@@ -23,16 +24,26 @@ const CardContainer = styled.section`
   }
 `;
 
-export const Card = ({ pokemon }) => {
+export const Card = memo(({ pokemon }) => {
+  const [isImageLoading, setIsImageLoading] = useState(true); //이미지 업로드 로딩 상태
   const navigate = useNavigate();
   return (
     //카드 클릭 시 pokemon 상세 페이지로 이동
     <CardContainer onClick={() => navigate(`/detail/${pokemon.id}`)}>
-      <img src={pokemon.front} />
+      {isImageLoading ? (
+        <div className="w-[120px] h-[120px] leading-[120px] text-center">
+          로딩중...
+        </div>
+      ) : null}
+      <img
+        onLoad={() => setIsImageLoading(false)}
+        src={pokemon.front}
+        style={{ display: isImageLoading ? "none" : "block" }}
+      />
       <div>
         {pokemon.name}
         <FavoriteButton pokemonId={pokemon.id} />
       </div>
     </CardContainer>
   );
-};
+});
